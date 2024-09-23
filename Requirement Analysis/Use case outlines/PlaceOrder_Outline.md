@@ -1,52 +1,72 @@
-# Use Case: Place Order
+# Use Case outline
 
 This document provides an outline for all the use cases to place an order.
 
-## Basic Flow for Use Case: Place Order
+## Use Case: Place Order
 
-1. The customer reviews the cart and selects the products they want to purchase.
-2. The system displays the products in the cart with their quantities, individual prices (excluding VAT), and the total price.
-3. The customer requests to place an order.
-4. The system checks if any product is out of stock or if the available quantity is insufficient.
-5. The system prompts the customer to provide delivery information, including recipient name, email, phone number, province/city, and delivery address.
-6. The customer enters delivery information.
-7. The system validates the delivery information.
-8. The system calculates and displays the delivery fee.
-9. The system checks if the delivery address supports the service and calculates a separate delivery fee for eligible products when rush order delivery is selected.
-10. The customer chooses to pay for the order.
-11. The system displays and temporarily saves the invoice, which includes:
-    - List of products
-    - Prices, VAT, and delivery fee
-    - Total amount to be paid
-12. The customer chooses the payment method.
-13. The customer provides all necessary information and places the order.
-14. The system connect to VNPay to process the payment
-15. The system displays general information of the order and transaction details.
-16. The system sends the invoice and payment transaction information to the customer's email.
-17. The system records the payment transaction information and the successfully paid order.
+### Basic Flow for Use Case: Place Order
 
-## Alternative Flows for Use Case: Place Order
+1. Customer reviews their cart and selects desired products.
+2. Customer initiates the order placement.
+3. System checks product availability (check inventory)
+4. Customer provides delivery details (name, email, phone, province/city, and address)
+5. System calculates and displays shipping costs based on location and product weight.
+6. System invokes the "Order Payment" use case.
+7. System records transaction details and confirms successful payment.
 
-#### 4a. If any product in the cart is out of stock or the available quantity is insufficient:
+### Alternative Flows for Use Case: Place Order
 
-1. The system displays a message to the customer to adjust the cart.
-2. The customer updates the cart and retries placing the order.
-3. The flow return to step 4
+#### 3a. Insufficient stock for one or more items.
 
-#### 7a. Invalid Delivery Information: If the delivery information is incomplete or invalid:
+1. System displays a stock shortage notification, indicating available quantities for affected items.
+2. Customer modifies their cart.
+3. Customer reinitiates the order placement.
+4. Returns to Step 3 of the Basic flow.
 
-1. The system prompts the customer to correct the information.
-2. The customer provides the correct information and continues with the order.
-3. The flow returns to step 7
+#### 4a. Customer submits invalid or incomplete delivery information.
 
-#### 9a. The selected products or delivery address do not support rush order delivery:
+1. System shows an error message highlighting missing or incorrect fields.
+2. Customer revises delivery information.
+3. Returns to Step 4 of the Basic flow.
 
-1. The system informs the customer that rush order delivery is unavailable for some or all products.
-2. The customer updates the delivery information or product selection.
-3. The system recalculates the delivery fee and updates the invoice.
+#### 4b. The customer chooses rush order delivery option.
 
-#### 14a. Payment Failure: If the payment is declined by VNPay:
+1. The software calls the use case "Rush Order Delivery".
+2. Returns to Step 5 of the Basic Flow.
 
-1. The system displays a message to the customer with the option to retry or update payment details.
-2. The customer retries the payment or updates the payment information.
-3. The flow return to step 14
+## Use Case: Pay Order
+
+### Basic Flow for Use Case: Pay Order
+
+1. System displays and temporarily stores the invoice, including:
+   - Product list
+   - Prices, VAT, and shipping fee
+   - Total payable amount
+2. Customer selects credit card payment.
+3. System connects to VNPay for credit card processing.
+4. Upon successful payment, system shows order details (e.g., customer info, shipping address, transaction ID).
+5. System emails invoice and payment confirmation.
+
+### Alternative Flows for Use Case: Pay Order
+
+#### 3a. VNPay payment fails.
+
+1. System displays an error message, prompting customer to retry or update payment details.
+2. Customer retries payment or updates information.
+3. Return to Step 3 of the Basic Flow
+
+## Use Case: Place Rush Order
+
+### Basic Flow for Use Case: Place Rush Order
+
+1. System verifies if delivery address and products are eligible for expedited shipping.
+2. System requests additional expedited shipping information from customer.
+3. **Place Order** use case continues.
+
+### Alternative Flows for Use Case: Place Rush Order
+
+#### 1a. Selected products or delivery address ineligible for expedited shipping.
+
+- System informs customer that expedited shipping is unavailable for some or all items.
+- Customer revises delivery information or product selection.
+- Return to Step 1 of the Basic Flow.
