@@ -64,7 +64,8 @@ This document provides an outline for all the use cases to place an order.
 
 1. System verifies if delivery address and products are eligible for expedited shipping.
 2. System requests additional expedited shipping information from customer.
-3. **Place Order** use case continues.
+3. Customer provides delivery time and instruction
+4. **Place Order** use case continues.
 
 ### Alternative Flows for Use Case: Place Rush Order
 
