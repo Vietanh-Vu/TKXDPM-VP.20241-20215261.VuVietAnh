@@ -11,7 +11,7 @@ This document provides an outline for all the use cases to place an order.
 3. System checks product availability (check inventory)
 4. Customer provides delivery details (name, email, phone, province/city, and address)
 5. System calculates and displays shipping costs based on location and product weight.
-6. System invokes the "Order Payment" use case.
+6. System invokes the "Pay Order" use case.
 7. System records transaction details and confirms successful payment.
 
 ### Alternative Flows for Use Case: Place Order
@@ -31,7 +31,7 @@ This document provides an outline for all the use cases to place an order.
 
 #### 4b. The customer chooses rush order delivery option.
 
-1. The software calls the use case "Rush Order Delivery".
+1. System calls the use case "Place Rush Order".
 2. Returns to Step 5 of the Basic Flow.
 
 ## Use Case: Pay Order
@@ -44,16 +44,19 @@ This document provides an outline for all the use cases to place an order.
    - Total payable amount
 2. Customer selects credit card payment.
 3. System connects to VNPay for credit card processing.
-4. Upon successful payment, system shows order details (e.g., customer info, shipping address, transaction ID).
-5. System emails invoice and payment confirmation.
+4. The customer provides all the necessary information and steps as requested by VNPay
+5. VNPay validates the payment information and processes the transaction.
+6. System receives the transaction confirmation from VNPay.
+7. Upon successful payment, system shows order details (e.g., customer info, shipping address, transaction ID).
+8. System emails invoice and payment confirmation.
 
 ### Alternative Flows for Use Case: Pay Order
 
-#### 3a. VNPay payment fails.
+#### 5a. VNPay payment fails.
 
 1. System displays an error message, prompting customer to retry or update payment details.
 2. Customer retries payment or updates information.
-3. Return to Step 3 of the Basic Flow
+3. Return to Step 5 of the Basic Flow
 
 ## Use Case: Place Rush Order
 
@@ -67,6 +70,6 @@ This document provides an outline for all the use cases to place an order.
 
 #### 1a. Selected products or delivery address ineligible for expedited shipping.
 
-- System informs customer that expedited shipping is unavailable for some or all items.
-- Customer revises delivery information or product selection.
-- Return to Step 1 of the Basic Flow.
+1. System informs customer that expedited shipping is unavailable for some or all items.
+2. Customer revises delivery information or product selection.
+3. Return to Step 1 of the Basic Flow.
