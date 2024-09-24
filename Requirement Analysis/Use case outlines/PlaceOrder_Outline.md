@@ -10,8 +10,8 @@ This document provides an outline for all the use cases to place an order.
 2. Customer initiates the order placement.
 3. System checks product availability (check inventory)
 4. Customer provides delivery details (name, email, phone, province/city, and address)
-5. System calculates and displays shipping costs based on location and product weight.
-6. System invokes the "Pay Order" use case.
+5. System calculates and displays shipping costs based on location and product weight. (invoke **Place Rush Order** Use Case)
+6. System invokes the **Pay Order** use case.
 7. System records transaction details and confirms successful payment.
 
 ### Alternative Flows for Use Case: Place Order
@@ -31,7 +31,7 @@ This document provides an outline for all the use cases to place an order.
 
 #### 4b. The customer chooses rush order delivery option.
 
-1. System calls the use case "Place Rush Order".
+1. System calls the use case **Place Rush Order**.
 2. Returns to Step 5 of the Basic Flow.
 
 ## Use Case: Pay Order
@@ -64,7 +64,8 @@ This document provides an outline for all the use cases to place an order.
 
 1. System verifies if delivery address and products are eligible for expedited shipping.
 2. System requests additional expedited shipping information from customer.
-3. **Place Order** use case continues.
+3. Customer provides delivery time and instruction
+4. **Place Order** use case continues.
 
 ### Alternative Flows for Use Case: Place Rush Order
 
