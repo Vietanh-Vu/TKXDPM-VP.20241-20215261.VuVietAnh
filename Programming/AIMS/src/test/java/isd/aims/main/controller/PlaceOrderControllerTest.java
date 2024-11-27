@@ -1,9 +1,15 @@
 package isd.aims.main.controller;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
+
+import java.util.HashMap;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -92,5 +98,26 @@ class PlaceOrderControllerTest {
     void validateNullName(String name) {
         boolean actual = placeOrderController.validateAddress(name);
         assertFalse(actual, "Null name should be invalid");
+    }
+
+    @ParameterizedTest(name = "#{index} - Test delivery info validation")
+    @MethodSource("provideDeliveryInfoTestCases")
+    void validateDeliveryInfo(String name, String phoneNumber, String address, boolean expected) throws Exception {
+        HashMap<String, String> info = new HashMap<>();
+        info.put("name", name);
+        info.put("phone", phoneNumber);
+        info.put("address", address);
+
+        boolean actual = placeOrderController.validateDeliveryInfo(info);
+        assertEquals(expected, actual, "Delivery info validation failed");
+    }
+
+    private static Stream<Arguments> provideDeliveryInfoTestCases() {
+        return Stream.of(
+                Arguments.of("ABCDEF", "0987654321", "Hanoi", true),
+                Arguments.of("ABCDEF", "1987654321", "Da Nang", false),
+                Arguments.of("", "0987654321", "Da Nang", false),
+                Arguments.of("ABCDEF", "0987654321", ".", false)
+        );
     }
 }
