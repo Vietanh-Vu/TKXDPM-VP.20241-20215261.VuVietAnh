@@ -17,6 +17,8 @@ public class BaseController {
      * @param media
      * @return CartMedia or null
      */
+    // Stamp Coupling: nhận Media làm tham số nhưng chỉ cần id của Media
+    // => Nên chỉ cần truyền id của Media
     public CartMedia checkMediaInCart(Media media){
         return Cart.getCart().checkMediaInCart(media);
     }

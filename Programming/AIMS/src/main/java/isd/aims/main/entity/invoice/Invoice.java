@@ -3,6 +3,7 @@ package isd.aims.main.entity.invoice;
 
 import isd.aims.main.entity.order.Order;
 
+// Functional Cohesion: Các thuộc tính và phương thức quản lý hóa đơn
 public class Invoice {
 
     private Order order;

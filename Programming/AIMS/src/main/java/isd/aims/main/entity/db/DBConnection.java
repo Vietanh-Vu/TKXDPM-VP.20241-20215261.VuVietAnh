@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.util.logging.Logger;
 import java.sql.Connection;
 import isd.aims.main.utils.Utils;
-
+// Functional Cohesion: các thuộc tính và phương thức quản lý kết nối cơ sở dữ liệu
 public class DBConnection {
 
 	private static Logger LOGGER = Utils.getLogger(Connection.class.getName());

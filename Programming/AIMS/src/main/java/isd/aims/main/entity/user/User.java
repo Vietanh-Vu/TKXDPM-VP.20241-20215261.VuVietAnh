@@ -1,5 +1,6 @@
 package isd.aims.main.entity.user;
 
+// Functional Cohesion: Các thuộc tính và phương thức quản lý thông tin người dùng
 public class User {
     
     private int id;

@@ -15,6 +15,7 @@ import java.sql.SQLException;
  * in our AIMS Software.
  *
  */
+// Procedural Cohesion: các phương thức đều liên quan đến việc xử lý thanh toán
 public class PaymentController extends BaseController implements TransactionResultListener {
 
 	private IPayment paymentService;

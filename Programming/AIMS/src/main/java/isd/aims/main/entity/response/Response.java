@@ -5,6 +5,7 @@ import isd.aims.main.exception.*;
 import java.util.HashMap;
 import java.util.Map;
 
+// Functional Cohesion: Các thuộc tính và phương thức tập trung vào xử lý chuỗi phản hồi
 public class Response {
     private String vnp_BankCode;
     private String vnp_PayDate;

@@ -3,6 +3,7 @@ package isd.aims.main.entity.cart;
 
 import isd.aims.main.entity.media.Media;
 
+// Functional Cohesion: Các phương thức định nghĩa đối tượng CartMedia và trích xuất đặc điểm của nó
 public class CartMedia {
     
     private Media media;

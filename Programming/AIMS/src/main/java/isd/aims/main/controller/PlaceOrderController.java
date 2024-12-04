@@ -17,6 +17,8 @@ import java.util.logging.Logger;
  *
  * @author nguyenlm
  */
+
+// Procedural Cohesion: các phương thức đều liên quan đến việc xử lý đặt hàng
 public class PlaceOrderController extends BaseController {
 
     /**
@@ -39,6 +41,7 @@ public class PlaceOrderController extends BaseController {
      * @return Order
      * @throws SQLException
      */
+    // Sequential Cohesion: createOrder() và createInvoice() có kết quả của phương thức trước là đầu vào của phương thức sau
     @SuppressWarnings("unchecked")
     public Order createOrder() throws SQLException {
         Order order = new Order();
@@ -58,6 +61,7 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
+    // Communicational Cohesion: Chia sẻ cùng input với calculateShippingFree
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }
@@ -192,6 +196,8 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return shippingFee
      */
+    // Control Coupling: tính phí dựa trên điều kiện của Order
+    // => Tách thành 2 hàm phục vụ cho việc tính phí có rush order hoặc không có rush order
     public int calculateShippingFee(Order order) {
         Random rand = new Random();
         int fees = (int) (((rand.nextFloat() * 10) / 100) * order.getAmount());

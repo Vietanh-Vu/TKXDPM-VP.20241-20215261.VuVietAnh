@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 /**
  * @author nguyenlm Contains helper functions
  */
+// Coincidental	Cohesion: Chứa nhiều chứ năng không liên quan như: date formatting, currency formatting, md5 encoding, create logger.
+// Tách thành các lớp riêng biệt
 public class Utils {
 
 	public static DateFormat DATE_FORMATER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

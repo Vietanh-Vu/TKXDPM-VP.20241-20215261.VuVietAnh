@@ -5,6 +5,7 @@ import isd.aims.main.entity.db.DBConnection;
 import java.sql.*;
 import java.util.Date;
 
+// Functional Cohesion: Các thuộc tính và phương thức tập trung vào xử lý giao dịch thanh toán
 public class PaymentTransaction {
 	private String errorCode;
 	private String transactionId;

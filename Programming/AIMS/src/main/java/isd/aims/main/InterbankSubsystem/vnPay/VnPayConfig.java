@@ -22,6 +22,7 @@ public class VnPayConfig {
     public static String secretKey = "HUQHTRVXVRGJJWHMBFCAUBAXOSAJBIND";
     public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
 
+    // Communicational Coupling: Chia sẻ cùng input với Sha256
     public static String md5(String message) {
         String digest = null;
         try {

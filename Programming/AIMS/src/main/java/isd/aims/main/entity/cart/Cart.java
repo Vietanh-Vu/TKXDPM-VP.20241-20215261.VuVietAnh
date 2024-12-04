@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Functional Cohesion: Các phương thức định nghĩa đối tượng Cart và trích xuất đặc điểm của nó
 public class Cart {
     
     private List<CartMedia> lstCartMedia;
@@ -21,10 +22,12 @@ public class Cart {
         lstCartMedia = new ArrayList<>();
     }
 
+    // đã sử dụng vừa đủ các tham số cần thiết
     public void addCartMedia(CartMedia cm){
         lstCartMedia.add(cm);
     }
 
+    // đã sử dụng vừa đủ các tham số cần thiết
     public void removeCartMedia(CartMedia cm){
         lstCartMedia.remove(cm);
     }

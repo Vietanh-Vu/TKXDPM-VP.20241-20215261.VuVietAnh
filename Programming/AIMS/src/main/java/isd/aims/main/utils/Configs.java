@@ -6,6 +6,8 @@ import javafx.scene.text.FontWeight;
 /**
  * @author nguyenlm Contains the configs for AIMS Project
  */
+// Coincidental	Cohesion: Chứa nhiều chứ năng không liên quan như: API constants, demo data, database configs, static resources.
+// => Tách thành các lớp riêng biệt
 public class Configs {
 
 	// api constants

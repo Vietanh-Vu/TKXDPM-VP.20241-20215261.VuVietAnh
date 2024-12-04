@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+// Functional Cohesion: Các thuộc tính và phương thức tập trung vào xây dựng URL request
 public class Request {
     int money;
     String orderInfo;
